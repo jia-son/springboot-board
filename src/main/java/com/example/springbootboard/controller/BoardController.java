@@ -1,6 +1,7 @@
 package com.example.springbootboard.controller;
 
 import com.example.springbootboard.dto.BoardDTO;
+import com.example.springbootboard.repository.BoardRepository;
 import com.example.springbootboard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -45,5 +46,13 @@ public class BoardController {
         List<BoardDTO> boardDTOList = boardService.findAll();
         model.addAttribute("boardList", boardDTOList);
         return "list";
+    }
+
+    @GetMapping("/{id}")
+    public String findById(@PathVariable("id") Long id, Model model) {
+        boardService.updateHits(id);
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("board", boardDTO);
+        return "detail";
     }
 }

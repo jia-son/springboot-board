@@ -6,8 +6,10 @@ import com.example.springbootboard.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName    : com.example.springbootboard.service
@@ -38,5 +40,21 @@ public class BoardService {
         }
 
         return boardDTOList;
+    }
+
+    // repository에서 별도로 추가한 메서드를 쓰는 경우 아래 어노테이션을 붙이는 것이 규칙이다
+    @Transactional
+    public void updateHits(Long id) {
+        boardRepository.updateHits(id);
+    }
+
+    public BoardDTO findById(Long id) {
+        Optional<BoardEntity> optionalBoardEntity = boardRepository.findById(id);
+        if(optionalBoardEntity.isPresent()) {
+            BoardEntity boardEntity = optionalBoardEntity.get();
+            return BoardDTO.toBoardDTO(boardEntity);
+        } else {
+            return null;
+        }
     }
 }
