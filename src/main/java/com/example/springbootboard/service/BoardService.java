@@ -66,6 +66,7 @@ public class BoardService {
         }
     }
 
+    @Transactional
     public List<BoardDTO> findAll() {
         List<BoardEntity> boardEntityList = boardRepository.findAll();
         List<BoardDTO> boardDTOList = new ArrayList<>();
@@ -82,6 +83,7 @@ public class BoardService {
         boardRepository.updateHits(id);
     }
 
+    @Transactional
     public BoardDTO findById(Long id) {
         Optional<BoardEntity> optionalBoardEntity = boardRepository.findById(id);
         if(optionalBoardEntity.isPresent()) {
