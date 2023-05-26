@@ -2,6 +2,7 @@ package com.example.springbootboard.dto;
 
 import com.example.springbootboard.entity.BoardEntity;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -31,6 +32,11 @@ public class BoardDTO {
     private int boardHits;
     private LocalDateTime boardCreatedTime;
     private LocalDateTime boardUpdatedTime;
+
+    private MultipartFile boardFile; // save.html -> Controller 파일을 담는 용도로 쓰임
+    private String originalFileName; // 원본 파일 이름을 담을 용도
+    private String storedFileName;   // 서버에 저장될 파일 이름을 담을 용도
+    private int fileAttached;        // 파일 첨부 여부를 확인하는 용도로 일종의 플래그값(첨부1, 미첨부0 등) true/false로 하면 entity에서 손이 많이 감.
 
     public static BoardDTO toBoardDTO(BoardEntity boardEntity) {
         BoardDTO boardDTO = new BoardDTO();
