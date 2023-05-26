@@ -1,5 +1,8 @@
 package com.example.springbootboard.repository;
 
+import com.example.springbootboard.entity.BoardFileEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  * packageName    : com.example.springbootboard.repository
  * fileName       : BoardFileRepository
@@ -11,5 +14,5 @@ package com.example.springbootboard.repository;
  * -----------------------------------------------------------
  * 2023-05-26        son-jia       최초 생성
  */
-public interface BoardFileRepository {
+public interface BoardFileRepository extends JpaRepository<BoardFileEntity, Long> {
 }
