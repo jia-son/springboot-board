@@ -80,6 +80,7 @@ public class BoardService {
         Page<BoardEntity> boardEntities =
                 boardRepository.findAll(PageRequest.of(page, pageLimit, Sort.by(Sort.Direction.DESC, "id")));
 
+        /*
         System.out.println("boardEntities.getContent() = " + boardEntities.getContent());             // 요청 페이지에 해당하는 글
         System.out.println("boardEntities.getTotalElements() = " + boardEntities.getTotalElements()); // 전체 글 갯수
         System.out.println("boardEntities.getNumber() = " + boardEntities.getNumber());               // DB로 요청한 페이지 번호
@@ -88,6 +89,8 @@ public class BoardService {
         System.out.println("boardEntities.hasPrevious() = " + boardEntities.hasPrevious());           // 이전 페이지 존재 여부
         System.out.println("boardEntities.isFirst() = " + boardEntities.isFirst());                   // 첫 페이지 여부
         System.out.println("boardEntities.isLast() = " + boardEntities.isLast());                     // 마지막 페이지 여부
+        */
+
 
         // 목록에서 보여줄 데이터 : id, writer, title, hits, createdTime
         Page<BoardDTO> boardDTOS =
